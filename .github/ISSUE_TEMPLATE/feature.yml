@@ -1,0 +1,61 @@
+# Copy to .github/ISSUE_TEMPLATE/. Change wording and add fields freely.
+# Keep the labels "Risk tier" and "Blocked by": automation reads those answers.
+name: Feature
+description: The specification for one change. Approving it starts the work.
+labels: [feature]
+body:
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Outcome and users
+      description: Who needs what, and why. What must work on first use.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and out of scope
+      description: The smallest complete slice. Name what waits.
+    validations:
+      required: true
+  - type: textarea
+    id: rules
+    attributes:
+      label: Rules and invariants
+      description: Business rules, permissions and failure cases.
+  - type: textarea
+    id: criteria
+    attributes:
+      label: Acceptance criteria
+      description: One per line, with an ID and how it is shown to hold.
+      placeholder: |
+        AC1: Given ..., when ..., then ... (named test)
+        AC2: Given ..., when ..., then ... (preview)
+    validations:
+      required: true
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Risk tier
+      description: >-
+        S: docs, tests or a small fix.
+        M: a feature inside the approved architecture.
+        L: dependency, migration, contract, security, CI or governance.
+      options: [M, L, S]
+    validations:
+      required: true
+  - type: input
+    id: blocked
+    attributes:
+      label: Blocked by
+      description: Issues that must be merged first, as "#12, #13". Else empty.
+  - type: textarea
+    id: open
+    attributes:
+      label: Open decisions
+      description: Leave empty when the issue is ready to be worked on.
+  - type: input
+    id: model
+    attributes:
+      label: Model pin (optional)
+      description: An exact model, if required. An unavailable pin waits.
